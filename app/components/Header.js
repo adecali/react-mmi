@@ -10,7 +10,7 @@ class Header extends React.Component {
     // Dans tous les cas, afficher
     return (
       <div>
-        <footer> HEADER </footer>
+        <header> Les Machines du plaisiiiirrr </header>
       </div>
       );
   }

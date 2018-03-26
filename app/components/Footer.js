@@ -10,7 +10,7 @@ class Footer extends React.Component {
     // Dans tous les cas, afficher
     return (
       <div>
-        <footer> FOOTER </footer>
+        <footer> By MMI machines </footer>
       </div>
       );
   }

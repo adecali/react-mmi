@@ -32,13 +32,14 @@ import css from '../../css/styles.css';
              super(props)
              this.state = {
                    machines:[
-                          { name : "Machine à Café",
+                          { id :1,
+                              name : "Machine à Café",
                              isActive:true},
                              
-                            { name:"Machine à chocolat", 
+                            { id: 2, name:"Machine à chocolat", 
                             isActive:false },
                                           
-                           { name:"Machine à thé",
+                           {id: 3, name:"Machine à thé",
                             isActive:true }
                   ]
              };
@@ -54,6 +55,7 @@ import css from '../../css/styles.css';
           <Header/>
           {this.state.machines.map(machine =>// console.log(machine.name))}
           <Machine name={machine.name}
+          key={machine.id}
           isActive={machine.isActive}/>
               
           )}
