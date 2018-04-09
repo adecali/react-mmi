@@ -7,7 +7,7 @@ import React from 'react';
 import Toggle from 'react-toggle'
 
 class Machine extends React.Component {
-   onToggleClick() { console.log('Hello')
+   onToggleClick() { console.log('BOUH')
      this.props.handleStatusChange(this.props.index);
 
    }
@@ -21,12 +21,14 @@ class Machine extends React.Component {
                      <button onClick={(e) => this.onToggleClick(e)} type="button" className="bouton">  
                      {this.props.isActive ? "Pro" : "Noob"}
                     </button>
-                    <Toggle onClick={(e)=> this.state.aubergineIsReady(e)}  className='custom-classname'/>
-                      <span>Custom className</span>
-
-
+                        <label>
+                              <Toggle
+                               checked={this.props.isActive}   onClick={(e) => this.onToggleClick(e)} />
+                        </label>
             </div>
+            
     )
+    
   }
 }
 // Le composant sera accessible avec le nom "Machine"

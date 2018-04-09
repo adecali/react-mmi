@@ -9,6 +9,8 @@ import React from 'react';
 import Machine from '../../components/Machine.js';
 import Header from '../../components/Header.js';
 import Footer from '../../components/Footer.js';
+//import AddMachineForm from '../../components/AddMachineForm.js';
+
 
 // On peut aussi importer du CSS de la meme facon.
 import css from '../../css/styles.css';
@@ -32,28 +34,23 @@ import css from '../../css/styles.css';
              super(props)
              this.handleStatusChange = this.handleStatusChange.bind(this);
              
-                 this.state = {
-                   machines:[
+                 this.state = { machines:[
                           { id :0,
-                              name : "Machine à Café",
-                             isActive:true},
+                              name : "Machine à Café", isActive:true},
                              
                             { id: 1, 
-                            name:"Machine à chocolat", 
-                            isActive:false },
+                            name:"Machine à chocolat", isActive:false },
                                           
                            {id: 2, 
-                           name:"Machine à thé",
-                            isActive:true },
+                           name:"Machine à thé", isActive:true },
                             
                              {id: 3, 
-                           name:"Machine à bouh",
-                            isActive:false }
+                           name:"Machine à bouh", isActive:false }
                            
-                  ]
-                  
-             };
-     }
+                            ]
+                      
+                             };
+                     }
      
        handleStatusChange(key) {
             const machines = { ...this.state.machines };
@@ -67,7 +64,12 @@ import css from '../../css/styles.css';
     
         return (
           <div className="principale">
-          <Header/>
+         <Header/>
+         <div id="app" class="app-container">
+
+        </div>
+                  
+
                     <div className="machines-list">{
               Object
                 .keys(this.state.machines)
@@ -79,14 +81,17 @@ import css from '../../css/styles.css';
                          index={this.state.machines[key].id}
                          handleStatusChange={this.handleStatusChange}
                          isActive={this.state.machines[key].isActive}
-                         onChange={this.state.machines[key].onChange}/>
+                        
+                        />
               )}
               
-      </div>
+                     </div>
+                     
         <Footer/>
       </div>
     );
   }
+  
 }
 
 export default App;
