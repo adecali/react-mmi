@@ -30,41 +30,63 @@ import css from '../../css/styles.css';
    class App extends React.Component {
      constructor (props){
              super(props)
-             this.state = {
+             this.handleStatusChange = this.handleStatusChange.bind(this);
+             
+                 this.state = {
                    machines:[
-                          { id :1,
+                          { id :0,
                               name : "Machine à Café",
                              isActive:true},
                              
-                            { id: 2, name:"Machine à chocolat", 
+                            { id: 1, 
+                            name:"Machine à chocolat", 
                             isActive:false },
                                           
-                           {id: 3, name:"Machine à thé",
-                            isActive:true }
+                           {id: 2, 
+                           name:"Machine à thé",
+                            isActive:true },
+                            
+                             {id: 3, 
+                           name:"Machine à bouh",
+                            isActive:false }
+                           
                   ]
+                  
              };
      }
      
-      render() {
-    // Dans tous les cas, afficher
-    //    <Machine tittle={this.state.machines[0].name} isActive={this.state.machines[0].isActive} />
-         //   <Machine tittle={this.state.machines[1].name} isActive={this.state.machines[1].isActive} /> 
-//<Machine tittle={this.state.machines[2].name} isActive={this.state.machines[2].isActive} />
-        return (
-          <div>
-          <Header/>
-          {this.state.machines.map(machine =>// console.log(machine.name))}
-          <Machine name={machine.name}
-          key={machine.id}
-          isActive={machine.isActive}/>
-              
-          )}
-      
-          <Footer/>
-          </div>
-          );
-      }
+       handleStatusChange(key) {
+            const machines = { ...this.state.machines };
+                 machines[key].isActive = !machines[key].isActive;
+
+            console.log({ machines });
+                 this.setState({ machines });
+  }
      
-   }
+      render() {
+    
+        return (
+          <div className="principale">
+          <Header/>
+                    <div className="machines-list">{
+              Object
+                .keys(this.state.machines)
+                .map(key =>
+                // Le composant Machine s'affichera autant de fois
+                // qu'il y a d'objets dans la collection.
+                <Machine name={this.state.machines[key].name}
+                         key={this.state.machines[key].id}
+                         index={this.state.machines[key].id}
+                         handleStatusChange={this.handleStatusChange}
+                         isActive={this.state.machines[key].isActive}
+                         onChange={this.state.machines[key].onChange}/>
+              )}
+              
+      </div>
+        <Footer/>
+      </div>
+    );
+  }
+}
 
 export default App;
