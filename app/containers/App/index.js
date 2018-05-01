@@ -9,6 +9,11 @@ import React from 'react';
 import Machine from '../../components/Machine.js';
 import Header from '../../components/Header.js';
 import Footer from '../../components/Footer.js';
+import AddMachine from '../../components/AddMachine.js';
+import MaMachine from '../../components/MaMachine.js';
+
+import GoogleMapReact from 'google-map-react';
+
 //import AddMachineForm from '../../components/AddMachineForm.js';
 
 
@@ -59,18 +64,36 @@ import css from '../../css/styles.css';
             console.log({ machines });
                  this.setState({ machines });
   }
-     
-      render() {
-    
-        return (
-          <div className="principale">
-         <Header/>
-         <div id="app" class="app-container">
+     // Méthode pour ajouter un formulaire
+  addMachineToState(machine) {
+    console.log("addMachineToState");
+    console.log(machine);
+  }
 
-        </div>
-                  
+  render() {
+    // Calcul des compteurs
+    const machinesIds = Object.keys(this.state.machines);
+    const totalActive = machinesIds.reduce((prevTotal, key) => {
+      const machine = this.state.machines[key];
+      const isAvailable = machine && machine.isActive;
+      // On incrémente le compteur à chaque fois que l'on trouve une machine active
+      return isAvailable ? prevTotal + 1 : prevTotal
+    }, 0);
+    const total = machinesIds.length;
 
-                    <div className="machines-list">{
+    return (
+      <div className="main">
+        <Header/>
+        
+          <AddMachine addMachineToState={this.addMachineToState}/>
+          {/*Compteurs*/}
+          <div className="counter">
+            <strong>{totalActive}</strong> / <strong>{total}</strong> Machines actives
+          </div>
+          {/*Conteneur de notre liste*/}
+          <div className="machines-list">
+            {/*Boucle sur notre collection de machines*/}
+            {
               Object
                 .keys(this.state.machines)
                 .map(key =>
@@ -80,18 +103,22 @@ import css from '../../css/styles.css';
                          key={this.state.machines[key].id}
                          index={this.state.machines[key].id}
                          handleStatusChange={this.handleStatusChange}
-                         isActive={this.state.machines[key].isActive}
-                        
-                        />
+                         isActive={this.state.machines[key].isActive}/>
               )}
-              
-                     </div>
-                     
+          </div>
+          <MaCarte/>
+       <GoogleMap
+        // apiKey={YOUR_GOOGLE_MAP_API_KEY} // set if you need stats etc ...
+        center={this.props.center}
+        zoom={this.props.zoom}>
+        <BellaMachina lat={59.955413} lng={30.337844} text={'A'} /* Kreyser Avrora */ />
+        <BellaMachina {...this.props.BellaMachinaCoords} text={'B'} /* road circle */ />
+      </GoogleMap>
+                 
         <Footer/>
       </div>
     );
   }
-  
 }
 
 export default App;

@@ -1,5 +1,5 @@
 h5 {
-    background-color:  #ffe6e6;
+    background-color:  #ffdb00;
     
 }
 .header,
@@ -7,6 +7,30 @@ h5 {
   padding: 20px 0;
   text-align: center;
   background: #eee;
+}
+.btn  {background: grey;
+  color: pink;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-left: 25px;
+  font-size: 14px;
+  align-items: center;
+  cursor: pointer;
+}
+.del  {background: red;
+  color: chartreuse;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-left: 25px;
+  font-size: 14px;
+  align-items: center;
+  cursor: pointer;
+
+}
+
+.del:hover {
+  background-color: grey;
+  cursor: pointer;
 }
 
 .bouton  {background: #2196f3;
@@ -191,4 +215,24 @@ h5 {
   -webkit-box-shadow: 0px 0px 5px 5px #0099E0;
   -moz-box-shadow: 0px 0px 5px 5px #0099E0;
   box-shadow: 0px 0px 5px 5px #0099E0;
+}
+/* Formulaire d'ajout */
+.add-machine-form {
+  background-color: #f3f3f3;
+  padding: 30px;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 1.4em;
+}
+
+.add-machine-form input,
+.add-machine-form select {
+  background-color: #eaeaea;
+  padding: 4px 6px;
+  margin-right: 10px;
+}
+
+.map-container {
+  height: 300px;
+  width: 100%;
 }

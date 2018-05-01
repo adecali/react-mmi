@@ -6,11 +6,14 @@
 import React from 'react';
 import Toggle from 'react-toggle'
 
+
 class Machine extends React.Component {
    onToggleClick() { console.log('BOUH')
      this.props.handleStatusChange(this.props.index);
-
-   }
+    
+  };
+   
+ 
    render() {
   // Dans tous les cas, afficher
       return (
